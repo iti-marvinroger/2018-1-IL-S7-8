@@ -30,26 +30,7 @@ namespace ITI.Work.Tests
                     Console.WriteLine( e.Current );
                 }
             }
-
-            ///
-            IEnumerator<int> e = myList.GetEnumerator();
-            try
-            {
-                while( e.MoveNext() )
-                {
-                    Console.WriteLine( e.Current );
-                }
-            }
-            finally
-            {
-                e.Dispose();
-            }
-
         }
-
-
-
-    }
 
         [Test]
         public void how_list_works()
@@ -96,7 +77,7 @@ namespace ITI.Work.Tests
                 myList.InsertAt( r.Next() % (myList.Count + 1), i + 1 );
             }
 
-            var checkList = new int[ listSize ];
+            var checkList = new int[listSize];
 
             for( int i = 0; i < listSize; ++i )
             {
@@ -144,4 +125,5 @@ namespace ITI.Work.Tests
         }
 
     }
+
 }
