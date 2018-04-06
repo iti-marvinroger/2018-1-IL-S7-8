@@ -79,13 +79,27 @@ namespace ITI.Work
         class E : IEnumerator<T>
         {
             readonly ITIList<T> _papa;
+            int _position = -1;
 
             public E( ITIList<T> papa )
             {
                 _papa = papa;
             }
 
-            public T Current => ;
+            public T Current
+            {
+                get
+                {
+                    try
+                    {
+                        return _papa._tab[_position];
+                    }
+                    catch( IndexOutOfRangeException )
+                    {
+                        throw new InvalidOperationException();
+                    }
+                }
+            }
 
             object IEnumerator.Current => Current;
 
@@ -95,9 +109,13 @@ namespace ITI.Work
 
             public bool MoveNext()
             {
+                _position++;
+                return (_position < _papa._tab.Length);
             }
 
-            public void Reset() => throw new NotSupportedException();
+            public void Reset() {
+                _position = -1;
+            }
         }
 
 
